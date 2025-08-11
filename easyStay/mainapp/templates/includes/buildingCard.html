@@ -1,0 +1,25 @@
+<div class="col-sm-5  card text-center mx-3 my-3 py-0  border-alternate">
+    <div class="row h-50 px-0 mx-0">
+        <a href="" class="w-100 px-0">
+            <img class="w-100" src="{{building.thumbnail.url}}" alt="picture of {{building.name}}">
+        </a>
+    </div>
+    <div class="row card-body ">
+        <h5>
+            <a href="{% url 'building_details' building.pk %}">{{building.name}} </a>
+        </h5>
+        <p class="card-type">
+            <a href="">{{building.type}}</a>
+        </p>
+        <p class="card-price">
+            &#8377; {{building.rent_price|floatformat:2 }}
+        </p>
+        <!-- <p class="card-place">
+            <a href="">{{building.address}}</a>
+        </p> -->
+        <p class="card-see">
+            <a href="{% url 'building_details' building.pk %}">View Detail</a>
+        </p>
+        <a href="" class="btn btn-custom">Book</a>
+    </div>
+</div>

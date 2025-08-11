@@ -6,53 +6,150 @@
 
 body {
 
-    background-color: #F0F8FF;
+    background-color: whitesmoke;
 
     header {
-        top:0;
+        top: 0;
 
-        /* background-color: aqua; */
-        /* justify-content: center; */
         nav {
-            background-color: #008080;
-            /* height:40px; */
-            border: 1px solid black;
-            justify-content: space-between;
-
-
-            /* width: 100px; */
-            div {
-                background-color: #2F4F4F;
-                height: 60px;
-                /* justify-content: space-between; */
-                align-content: space-between;
-
-            }
-
-            form {
-                /* border: 1px solid #000000; */
-                margin-left: 300px;
-                /* width: 100%; */
-                align-items: center;
-            }
-
-            ul {
-                justify-content: space-between;
-                /* border: 1px solid black; */
-                height: 100%;
-                align-items: center;
-                margin-left: 170px;
-
-                li {
-                    justify-items: right;
-                }
-
-            }
-
-
+            background-color: #36454F;
         }
+
+
     }
+
     main {
         margin-top: 65px;
+
+
+        .home-container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            justify-content: center;
+            margin-bottom: 25px;
+
+            .card {
+                border: 1px solid #18272c;
+                box-shadow: 1px 1px 1px 2px #3d5c66;
+                /* background-color: black; */
+                /* width: 250px; */
+                /* margin-top: 1000px; */
+                margin-bottom: 50px;
+                width: 250px;
+                height: 420px;
+                /* justify-content: space-between; */
+
+                .row {
+                    /* margin-top: 100px; */
+                    height: 50%;
+                    overflow: hidden;
+                    padding: 0;
+
+                    /* border: 1px solid red; */
+                    img {
+                        height: 200px;
+                        width: 100px;
+                        object-fit: cover;
+                        padding: 0;
+                    }
+                }
+
+                .card-body {
+                    /* display: flex; */
+                    /* flex-direction: column; */
+                    margin: 1px;
+                    padding: 20px;
+
+                    h5 {
+                        height: 30px;
+                        padding: 2px;
+                        overflow: hidden;
+                        object-fit: contain;
+                        color: black;
+
+                        a {
+                            text-decoration: none;
+                            /* color: white; */
+                            color: black;
+                        }
+
+
+                    }
+
+                    .card-type {
+                        a {
+                            text-decoration: none;
+                            color: black;
+
+                        }
+
+                    }
+
+                    .card-place {
+                        a {
+                            text-decoration: none;
+                            color: black;
+                        }
+
+                    }
+
+                    .card-price {
+
+                        font-size: larger;
+                        height: 10px;
+                        color: black;
+                        /* margin-bottom :  20px; */
+                    }
+
+                    .card-see {
+                        a {
+                            text-decoration: none;
+                            color: black;
+                            height: 10px;
+                            /* border: 1px solid gold; */
+                            /* margin: auto; */
+                        }
+
+                        .active {
+                            color: #3d5c66;
+                        }
+
+                        a:hover {
+                            color: #3d5c66;
+                        }
+                    }
+
+                    .btn-custom {
+                        background-color: #3d5c66;
+                        color: white;
+                    }
+
+                }
+
+                a.btn {
+                    border-radius: 5px;
+                    width: 50%;
+                    margin: auto;
+                }
+
+                .active {
+                    background-color: white;
+                    color: #3d5c66;
+                }
+
+
+
+            }
+        }
+
+       
+
+        /* home body card end */
     }
+}
+
+.border-alternate {
+    /* border-radius: 0px 10px; */
+    overflow: hidden;
 }

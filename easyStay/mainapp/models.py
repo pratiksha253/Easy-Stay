@@ -75,7 +75,7 @@ class Building(models.Model):
     name = models.CharField(max_length=200)
     type = models.ForeignKey(BuildingType, on_delete=models.CASCADE, related_name='building_types')
     rent_price=models.FloatField(default=00000)
-    deposite=models.FloatField(default=00000)
+    deposit=models.FloatField(default=00000)
     thumbnail=models.ImageField(upload_to='buildings/', blank=True, null=True)
     address=models.ForeignKey(Address, on_delete=models.SET_NULL, blank=True, null=True, related_name='building_address' )
     # owner=models.CharField(max_length=100)

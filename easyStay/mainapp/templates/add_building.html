@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+Add buildings
+{% endblock %}
+
+{% block content %}
+<div class="w-50 mx-auto" id="build_details">
+    <form method="post" enctype="multipart/form-data" class="form-control">
+        <h5>Add Your Building Details</h5>
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="row my-3">
+            <div class="col-sm-4"><label for="id_{{field.name}}">{{field.name.capitalize}}</label></div>
+            <div class="col-sm-6">
+                {{field}}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-custom" style="background-color: #3d5c66; color:white;">Add
+            Building</button>
+    </form>
+
+</div>
+
+{% endblock %}

@@ -8,13 +8,14 @@
     {% endcomment %}
 </section>
 <section id="buildings">
+    <div class="home-container">
     {% for building in buildings %}
-
-    {{building.name}}
-    <img src="{{building.thumbnail.url}}" alt="asf">
+        {% include 'includes/buildingCard.html'%}
+    
     
 
 
     {% endfor %}
+    </div>
 </section>
 {% endblock %}
