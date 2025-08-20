@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Confirm Booking
+{% endblock %}
+
+{% block content %}
+<p class="p-book"><b>Confirmation Details</b></p>
+<div class="com-book">
+
+    <div class="img-book">
+        <img src="{{building.thumbnail.url}}" alt="">
+    </div>
+    <div class="comm-book">
+        Hi <b>{{user.username}}</b><b class="text-warning">, </b>Please confirm that you have booked this house <br>
+        <b>Name</b> <b class="text-warning">: </b>{{Building.name}} <br>
+        <b>Booking Date</b><b class="text-warning">:</b> {{booking.booking_date}} <br>
+        <b>Advance Amount</b><b class="text-warning">: </b>{{booking.advance_amount}}<br>
+        <b>Total Amount</b> <b class="text-warning">: </b> {{booking.total_amount}}<br>
+
+    </div>
+    <a href="" class=" a-book text-decoration-none btn btn-warning">Pay now</a>
+</div>
+{% endblock %}

@@ -7,6 +7,7 @@ Update - {{building.name}}
 {% block content %}
 <div class="w-50 mx-auto">
     <form method="post" enctype="multipart/form-data" class="form-control">
+        <h4>Update Details</h4>
         {% csrf_token %}
         {% for field in form %}
         <div class="row my-3">
@@ -16,7 +17,7 @@ Update - {{building.name}}
             </div>
         </div>
         {% endfor %}
-        <button type="submit" class="btn btn-custom" style=" background-color: #3d5c66; color:white;">Update</button>
+        <button type="submit" class="btn btn-custom" style=" background-color: #132125; color:white;">Update</button>
     </form>
 
 </div>

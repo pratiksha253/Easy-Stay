@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 STATE_CHOICES = [
     # States
@@ -89,4 +90,7 @@ class Building(models.Model):
 class BuildingImage(models.Model):
     title = models.CharField(max_length=200)
     img = models.ImageField('building_images/')
-    building = models.ForeignKey(Building, on_delete=models.CASCADE, related_name='building_images')
+    building = models.ForeignKey(Building, on_delete=models.CASCADE, related_name='building_images', null=True, blank =True)
+    
+    def get_absolute_url(self):
+        return reverse("building_details", kwargs={"pk": self.building.pk})

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ item.car.name }} Rent Cart
+{% endblock %}
+
+{% block content %}
+<div class="book-succ">
+    <h2>Booking Created Successfully!</h2>
+    <p><strong>Building:</strong> {{ booking.Building.name }}</p>
+    <p><strong>Booking Date</strong>{{booking.booking_date}}</p>
+    <p><strong>advance_amount:</strong> ₹{{ booking.advance_amount}}</p>
+    <p><strong>Status:</strong> {{ booking.status }}</p>
+
+    {% if booking.status == 'pending' %}
+        <a href="">
+            <button>Pay Now</button>
+        </a>
+    {% else %}
+        <p>Payment already completed.</p>
+    {% endif %}
+</div>
+{% endblock %}

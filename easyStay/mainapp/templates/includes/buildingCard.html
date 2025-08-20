@@ -1,4 +1,4 @@
-<div class="col-sm-5  card text-center mx-3 my-3 py-0  border-alternate">
+<div class=" card col-sm-5  card text-center mx-3 my-3 py-0  border-alternate">
     <div class="row h-50 px-0 mx-0">
         <a href="" class="w-100 px-0">
             <img class="w-100" src="{{building.thumbnail.url}}" alt="picture of {{building.name}}">
@@ -20,6 +20,6 @@
         <p class="card-see">
             <a href="{% url 'building_details' building.pk %}">View Detail</a>
         </p>
-        <a href="" class="btn btn-custom">Book</a>
+        <a href="{% url '' %}" class="btn btn-custom">Book</a>
     </div>
 </div>

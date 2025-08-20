@@ -16,5 +16,13 @@ class EmailOTP(models.Model):
 
     def __str__(self):
         return f"{self.email} - {self.otp}"
+    
 
+from django.contrib.auth.models import User
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_profile')
+    category = models.CharField(choices = [
+        ('Owner','owner'), ('Customer','customer')
+    ])
+    
 

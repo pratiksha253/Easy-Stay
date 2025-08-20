@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <h2 class="mb-4 fw-bold">Welcome to Easystay</h2>
+            <p class="lead text-muted">
+                At <strong>Easystay</strong>, we're passionate about helping you find the perfect place to call home —
+                whether it's for a few days, months, or years.
+            </p>
+            <p class="mt-4">
+                Founded in 2025, Easystay has become a trusted platform for affordable and convenient home rentals. From
+                cozy apartments to spacious family houses, we make it easy to find a property that fits your lifestyle
+                and budget.
+            </p>
+            <p class="mt-4">
+                Our mission is to connect tenants with verified property owners, offering flexible rental options,
+                transparent pricing, and a seamless booking process. We work with trusted landlords to ensure quality,
+                safety, and comfort.
+            </p>
+            <p class="mt-4">
+                Whether you're relocating, traveling, or searching for a long-term stay, <strong>Easystay</strong> is
+                here to make your journey to a new home smooth and stress-free. Join thousands of satisfied renters who
+                trust us every day.
+            </p>
+            <a href="{% url 'homepage' %}" class="btn btn-custom mt-4"
+                style=" background-color: #3d5c66 ; color:white">Browse Homes</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

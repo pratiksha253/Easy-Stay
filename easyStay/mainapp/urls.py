@@ -8,4 +8,6 @@ urlpatterns=[
     path('building/<int:pk>', views.BuildingDetails.as_view(), name= 'building_details'),
     path('building/update/<int:pk>', views.UpdateBuilding.as_view(), name = 'updatebuilding'),
     path('building/delete/<int:pk>', views.DeleteBuilding.as_view(), name = 'deletebuilding'),
+    path('building/<int:building_id>/pictures/add/', views.AddBuildingPictures.as_view(), name='add_pictures'),
+    path('search', views.searchView, name='search')
 ]

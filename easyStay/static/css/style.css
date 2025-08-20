@@ -12,7 +12,7 @@ body {
         top: 0;
 
         nav {
-            background-color: #36454F;
+            background-color: #0b2028;
         }
 
 
@@ -30,15 +30,19 @@ body {
             margin-bottom: 25px;
 
             .card {
-                border: 1px solid #18272c;
-                box-shadow: 1px 1px 1px 2px #3d5c66;
+                /* border: 1px solid #18272c; */
+                box-shadow: 1px 1px 1px 2px #5c8a99;
                 /* background-color: black; */
                 /* width: 250px; */
                 /* margin-top: 1000px; */
                 margin-bottom: 50px;
                 width: 250px;
                 height: 420px;
+
                 /* justify-content: space-between; */
+                .card:hover {
+                    transform: translateY(-5px);
+                }
 
                 .row {
                     /* margin-top: 100px; */
@@ -121,7 +125,7 @@ body {
                     }
 
                     .btn-custom {
-                        background-color: #3d5c66;
+                        background-color: #000000;
                         color: white;
                     }
 
@@ -143,7 +147,51 @@ body {
             }
         }
 
-       
+        #building-details {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 20px;
+
+
+            .col {
+                #carouselExampleCaptions img {
+                    width: 100%;
+                    height: 400px;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+
+                #caption h5 {
+
+                    font-size: 1.3rem;
+                    font-weight: 600;
+
+                }
+
+                h2 {
+        
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                }
+
+                p {
+                    font-size: 1.2rem;
+                    margin-bottom: 25px;
+                }
+
+                .row {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    gap: 10px;
+                }
+
+                .row a.btn {
+                    flex: 1;
+                    text-align: center;
+                }
+            }
+        }
 
         /* home body card end */
     }
