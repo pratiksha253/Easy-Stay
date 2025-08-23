@@ -5,19 +5,19 @@ Update - {{building.name}}
 
 
 {% block content %}
-<div class="w-50 mx-auto">
+<div class="w-50 " id="up_card">
     <form method="post" enctype="multipart/form-data" class="form-control">
-        <h4>Update Details</h4>
+        <h4 class="up_text">Update Details</h4>
         {% csrf_token %}
         {% for field in form %}
-        <div class="row my-3">
-            <div class="col-sm-4"><label for="id_{{field.name}}">{{field.name.capitalize}}</label></div>
+        <div class="up_row my-3">
+            <div class="col-sm-4 "><label for="id_{{field.name}}"> <h5>{{field.name.capitalize}} : </h5></label></div>
             <div class="col-sm-6">
                 {{field}}
             </div>
         </div>
         {% endfor %}
-        <button type="submit" class="btn btn-custom" style=" background-color: #132125; color:white;">Update</button>
+        <button type="submit" class="btn btn-custom w-100" style=" background-color: #132125; color:white;">Update</button>
     </form>
 
 </div>

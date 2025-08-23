@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ user.username|capfirst }}'s Booking
+{% endblock %}
+{% block content %}
+<div class="container ppy-5">
+    <h2 class="mb-4 fw-bold text-center">My Bookings</h2>
+    {% if bookings %}
+    <table class="table table-borderless align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>name</th>
+                <th>Advance Amount</th>
+                <th>Total Amount</th>
+                <th>Booking Date</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{booking.building.name}}</td>
+                <td>{{booking.advance_amount}}</td>
+                <td>{{booking.total_amount}}</td>
+                <td>{{booking.booking_date}}</td>
+                <td>{{booking.status}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-center text-muted">No bookings yet</p>
+    {% endif %}
+</div>
+{% endblock %}

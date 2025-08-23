@@ -42,11 +42,18 @@ class BuildingDetails(DetailView):
     model = Building
     template_name = 'building_details.html'
     context_object_name = 'building'
-    
+
     def get_context_data(self, **kwargs):
-        context =  super().get_context_data(**kwargs)
-        images = BuildingImage.objects.filter(building = self.object)
+        context = super().get_context_data(**kwargs)
+        
+        # Fetch related images
+        images = BuildingImage.objects.filter(building=self.object)
         context['images'] = images
+        
+        # Fetch facilities using ManyToMany relation
+        facilities = self.object.facilities.all()
+        context['facilities'] = facilities
+        
         return context
 
 class UpdateBuilding(UpdateView):
@@ -72,13 +79,22 @@ class AddBuildingPictures(CreateView):
         form.instance.building = Building.objects.get(id = self.kwargs['building_id'])
         return super().form_valid(form)
 
+class RemBuildingPictures(DeleteView):
+    template_name = 'delete_picture.html'
+    model = BuildingImage
+    
+    def get_success_url(self):
+        return reverse('building_details', kwargs={'pk':self.object.building.pk})
+    
+    
 def searchView(request):
     query=request.GET.get('q')
-    result_building=Building.objects.filter(name_icontains = query)
+    result_building=Building.objects.filter(name__icontains = query)
     context = {
-        'buildings' : result_building,
         'query' : query,
-        'search_bar' : True
+        'buildings' : result_building,
+
     }
-    template = loader.get_template('search_result.html')
-    return HttpResponse(template.render(context,request))
+    template = 'search_results.html'
+
+    return render(request, template, context)

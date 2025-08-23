@@ -1,41 +1,26 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Booking
 from mainapp.models import Building
+from django.views.generic import CreateView, ListView
+from django.urls import reverse_lazy
 
-@login_required
-def create_booking(request,building_id):
-    building = get_object_or_404(Building, id=building_id)
-    if request.method == 'POST':
-        guests = request.POST.get('guests')
-        advance_amount = request.POST.get('advance_amount')
-        total_amount = request.POST.get('total_amount')
+from .forms import BookingForm
 
-        booking = Booking.objects.create(
-            user=request.user,
-            building=building,
-            advance_amount=advance_amount,
-            total_amount=total_amount,
-            booking_date=datetime.now()     
-        )
-        return redirect('booking_confirm', booking_id=booking.id)
-
-    return render(request, 'create_booking.html', {'building': building})
+class CreateBooking(CreateView):
+    model = Booking
+    template_name = 'booking.html'
+    form_class = BookingForm
+    success_url = reverse_lazy('bookings')
     
-def booking_confirm(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id)
-    return render(request, 'booking_confirm.html', {'booking': booking})
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
-def booking_success(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id)
-    return render(request, 'booking_success.html', {'booking': booking})
 
-
-def booking_cancel(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id)
-    booking.status = 'cancelled'
-    booking.save()
-    return redirect('confirm_booking')
-
+class Bookings(ListView):
+    model = Booking
+    template_name = 'bookings.html'
+    context_object_name = 'bookings'
 

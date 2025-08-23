@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container-fluid" id="building-details">
     <div class="row">
-        <div class="col">
+        <div class="col col-lg-6 col-12">
             <div id="carouselExampleCaptions" class="carousel slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -19,16 +19,31 @@
                         aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-
+                    {% if images %}
                     {% for image in images %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
                         <img src="{{image.img.url}}" class="d-block w-80" alt="...">
                         <div class="carousel-caption d-none d-md-block" id="caption">
                             <h5>{{image.title.capitalize}}</h5>
+                            {% if user.is_staff %}
+                            <p><a href="{% url 'rem_picture' building.pk image.id %}"><i
+                                        class="bi bi-trash3-fill"></i></a></p>
+                            {% endif %}
+
+
 
                         </div>
                     </div>
                     {% endfor %}
+                    {% else %}
+                    <div class="carousel-item active">
+                        <img src="{{building.thumbnail.url}}" class="d-block w-80" alt="...">
+                        <div class="carousel-caption d-none d-md-block" id="caption">
+                            <h5>{{building.name.capitalize}}</h5>
+                            <!-- <p><a href=""><i class="bi bi-trash3-fill"></i></a></p> -->
+                        </div>
+                    </div>
+                    {% endif %}
 
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -43,21 +58,45 @@
                 </button>
             </div>
         </div>
-        <div class="col">
+        <div class="col col-12 col-lg-6">
             <h2>
                 {{building.name.capitalize}}
             </h2>
             <p>
                 Rs.{{building.rent_price}}
             </p>
+            <p>
+                Deposite:{{building.deposit}}<br>
+                BuildingType:{{building.type}}<br>
+
+                <!-- Facilities (Badges become stacked on smaller screens) -->
+            <div class="mb-3">
+                <h5 class="fw-semibold">Facilities</h5>
+                {% if facilities %}
+                <div class="d-flex flex-wrap gap-2">
+                    {% for facility in facilities %}
+                    <span class="badge rounded-pill bg-info text-dark">{{ facility.title }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <span class="text-muted">No facilities listed</span>
+                {% endif %}
+            </div>
+            Address:{{building.address}}
+
+            </p>
 
 
             <div class="row">
+                {% if user.is_staff %}
                 <a href="{% url 'add_pictures' building.pk %}" class="col-sm-4 btn btn-secondary">Add Pictures</a>
-                <a href="" class="col-sm-4 btn btn-primary mx-auto">Book</a>
                 <a href="{% url 'updatebuilding' building.pk %}" class="col-sm-4 btn btn-warning">Update</a>
-                <a href="{% url 'deletebuilding' building.pk %}" class="col-sm-4 btn btn-danger">Delete</a>
-                
+                <a href="{% url 'deletebuilding' building.pk %}" class="col-sm-4 btn btn-danger">Delete<i
+                        class="bi bi-trash3-fill"></i></a>
+                {% else %}
+                <a href="{% url 'book' building.id %}" class="col-sm-4 btn btn-primary mx-auto">Book</a>
+                {% endif %}
+
 
             </div>
 

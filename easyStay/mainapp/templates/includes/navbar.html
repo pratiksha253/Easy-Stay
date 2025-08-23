@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg  fixed-top top-0 w-100  ">
+<nav class="navbar navbar-expand-lg  fixed-top top-0 w-100  navbar-dark" data-bs-theme='dark'>
     <div class="container-fluid div_class ">
         <a class="navbar-brand" href="{% url 'homepage' %}"> <strong class="text-light">Easystay</strong></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
@@ -7,10 +7,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <form class="d-flex w-50 h-100" role="search" method="get" action="">
-            <input class="form-control me-2 border-dark" type="search" placeholder="Search" aria-label="Search"
-                name="q" />
-            <button class="btn btn-outline-dark " type="submit"> <strong class="text-light">Search</strong></button>
+        <form class="d-flex w-50 h-100" role="search" method="get" action="{% url 'search_buildings' %}">
+            <input class="form-control me-2 border-light" type="search" placeholder="Find Your Dream Stay"
+                aria-label="Search" name="q" value="{{query}}">
+            <button class=" btn btn-outline-light " type=" submit"> <strong>Search</strong></button>
         </form>
         <div>
 
@@ -27,14 +27,15 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url 'addbuilding' %}"><strong
-                                class="text-light">Add</strong></a>
+                                class="text-light">Add <i class="bi bi-house-add" href="{% url 'addbuilding' %}" ></i></strong></a>
                     </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
 
                             {% if user.is_authenticated %}
-                            <strong class="text-light">{{user.username.capitalize}}</strong>
+                            <strong class="text-info">{{user.username.capitalize}}</strong>
                             {% else %}
                             <strong class="text-light">Accounts</strong>
                             {% endif %}
@@ -50,6 +51,8 @@
                                     <button type="submit" class="dropdown-item">Logout</button>
                                 </form>
                             </li>
+                            <li><a class="dropdown-item" href="{% url 'bookings' %}">My bookings</a></li>
+
                             {% endif %}
                         </ul>
                     </li>

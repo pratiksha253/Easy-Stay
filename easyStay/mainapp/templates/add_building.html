@@ -4,20 +4,20 @@ Add buildings
 {% endblock %}
 
 {% block content %}
-<div class="w-50 mx-auto" id="build_details">
+<div class="w-50   " id="build_details">
     <form method="post" enctype="multipart/form-data" class="form-control">
-        <h5>Add Your Building Details</h5>
+        <h5 class="build_text">Add Your Building Details</h5>
         {% csrf_token %}
         {% for field in form %}
         <div class="row my-3">
-            <div class="col-sm-4"><label for="id_{{field.name}}">{{field.name.capitalize}}</label></div>
+            <div class="col-sm-4"><label for="id_{{field.name}}"> <h5>{{field.name.capitalize}} : </h5></label></div>
             <div class="col-sm-6">
                 {{field}}
             </div>
         </div>
         {% endfor %}
-        <button type="submit" class="btn btn-custom" style="background-color: #111b1e; color:white;">Add
-            Building</button>
+        <button type="submit" class="btn btn-custom w-100" style="background-color: #111b1e; color:white;">Add
+            Building <i class="bi bi-house-add"></i></button>
     </form>
 
 </div>
